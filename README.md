@@ -1,9 +1,12 @@
 A flask app prototype of the Rewind vinyl crowdfunding service. 
 
 
-Getting it to work:
+Getting the dependencies:
 	
 	pip install -r requirements.txt 
+
+Then, to run it:
 	python run.py
 
-Enjoy!
+
+Go to localhost in your favorite browser and enjoy!
