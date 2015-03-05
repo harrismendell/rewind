@@ -6,6 +6,7 @@ Getting the dependencies:
 	pip install -r requirements.txt 
 
 Then, to run it:
+
 	python run.py
 
 
