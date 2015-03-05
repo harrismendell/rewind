@@ -7,7 +7,7 @@ Getting the dependencies:
 
 Then, to run it:
 
-	python run.py
+	python setup.py
 
 
 Go to localhost in your favorite browser and enjoy!
