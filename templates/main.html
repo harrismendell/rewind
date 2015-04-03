@@ -1,36 +1,11 @@
-
-<html lang="en"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rewind</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- more css -->
-    <link rel= "stylesheet" type= "text/css" href= "/static/css/main.css">
-  </head>
+{% extends "layout.html" %}
 
   <body>
-
-    <div class="site-wrapper">
-
-
-            
-      <nav id="nav" class="navbar navbar-default navbar-static-top">
-        <div class="container">
-          <ul class="nav masthead-nav">
-            <li class="active"><a href="">About</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Labels</a></li>
-            <li><a href="">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-
-
+      {%  block content %}
       <div class="inner cover">
          <img id="logo" src="/static/img/logo.png">
         <p id="tagline"class="lead">Fund the records you want to buy.</p>
       </div>
+      {%  endblock %}
 
-
-    </div>
+  </body>
