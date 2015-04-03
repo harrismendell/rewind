@@ -5,6 +5,17 @@ $(function() {
         }
     });
 
-    
+    $('.thumbnail').hover(
+        function(){
+            $(this).find('.caption').slideDown(300);
+        },
+        function(){
+            $(this).find('.caption').slideUp(300);
+        }
+);
+
 });
+
+//$("[rel='tooltip']").tooltip();
+
 
