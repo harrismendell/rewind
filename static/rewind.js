@@ -5,6 +5,7 @@ $(function() {
         }
     });
 
+    //Courtesy of http://bootsnipp.com/snippets/featured/thumbnail-caption-hover-effect
     $('.thumbnail').hover(
         function(){
             $(this).find('.caption').slideDown(300);
