@@ -10,4 +10,8 @@ Then, to run it:
 	python setup.py
 
 
-Go to localhost in your favorite browser and enjoy!
+Pages set up: 
+	
+	About page
+	Store page (but only with "Lemuria - Get Better" interactivity)
+	Record page (but only with "Lemuria - Get Better" interactivity)
