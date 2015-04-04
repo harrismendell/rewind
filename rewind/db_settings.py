@@ -1,4 +1,3 @@
-
 class Config(object):
     # configuration
     DATABASE = '/tmp/flaskr.db'

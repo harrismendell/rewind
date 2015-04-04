@@ -14,7 +14,7 @@ def record(recordid):
     # TODO use functions to dynamically retrieve info needed to render template (given a record_id).
 
     return render_template('record.html',
-                           band_name="Lemuria",
+                           band="Lemuria",
                            record="Get Better",
                            record_cover="/static/img/lemuriaGetBetter.jpg",
                            price="$10.00",
