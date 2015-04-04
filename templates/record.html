@@ -6,14 +6,14 @@
         <div class="col-lg-8">
             <h1> {{ band_name }}: {{ record }}</h1> <br>
             <div class="col-md-8">
-                <img class ="img-responsive img-rounded" src="/static/img/lemuriaGetBetter.jpg">
+                <img class ="img-responsive img-rounded" src={{ record_cover }}>
             </div>
             <div class="col-sm-4"> </div>
             <h1><strong> {{ current_buyers }}/{{ max_buyers }} </strong> <small>Claimed</small></h1>
             <h1><strong> {{ days_to_go }} </strong> <small>Days to go</small> </h1>
             <h3>Pitchfork Review: <small>{{ pitchfork_score }}</small></h3>
             <div style="text-align: left">
-            "We have a lot of fun rappin' with ya here at Pitchfork, but let's get serious for a moment: were the 1990s really that bad? Maybe it's a sign I need to spend less time talking with other music writers, because the consensus appears to be an overwhelming, "dear fucking god, TOTALLY." Maybe I'm just naïve, having exited the decade as a teen, but Pinkerton, the NHL 92-96, Higher Learning...we had some good times, right? It's within this context that I fear for Lemuria, even with a promising debut in tow. Because their sales pitch can definitely double as a dealbreaker for some: This sounds just like 1993..."
+            {{ review_snippet }}
             <a href="{{ pitchfork_link }}">Read More</a>
             </div>
             <br>
