@@ -14,3 +14,9 @@ def select_record(record_id):
         cur = con.cursor()
         result = cur.execute(''.join(("SELECT * FROM record WHERE id=", str(record_id))))
         return result.fetchall()
+
+def get_shop_info():
+    with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
+        cur = con.cursor()
+        result = cur.execute("SELECT band,record,price,current_buyers,max_buyers FROM record")
+        return result.fetchall()

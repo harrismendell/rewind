@@ -6,18 +6,18 @@
         <div class="col-lg-8">
             <h1> {{ band }}: {{ record }}</h1> <br>
             <div class="col-md-8">
-                <img class ="img-responsive img-rounded" src={{ record_cover }}>
+                <img class ="img-thumbnail img-rounded" height="500px" width="500px" src={{ record_cover }}>
             </div>
             <div class="col-sm-4"> </div>
-            <h1><strong> {{ current_buyers }}/{{ max_buyers }} </strong> <small>Claimed</small></h1>
-            <h1><strong> {{ days_to_go }} </strong> <small>Days to go</small> </h1>
-            <h3>Pitchfork Review: <small>{{ pitchfork_score }}</small></h3>
-            <div style="text-align: left">
-            {{ review_snippet }}
-            <a href="{{ pitchfork_link }}">Read More</a>
-            </div>
-            <br>
-            <button type="button" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
+                <h1><strong> {{ current_buyers }}/{{ max_buyers }} </strong> <small>Claimed</small></h1>
+                <h1><strong> {{ days_to_go }} </strong> <small>Days to go</small> </h1>
+                <h3>Pitchfork Score: <small>{{ pitchfork_score }}</small></h3>
+                <div style="text-align: left">
+                {{ review_snippet }}
+                <a href="{{ pitchfork_link }}">Read More</a>
+                </div>
+                <br>
+                <button type="button" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
         </div>
     </div>
     <br>

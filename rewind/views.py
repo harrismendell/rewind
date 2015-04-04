@@ -1,5 +1,5 @@
 from flask import render_template, g
-from models import select_record
+from models import select_record, get_shop_info
 from rewind import app
 import sqlite3 as sql
 
@@ -10,6 +10,7 @@ def title_screen():
 
 @app.route('/shop')
 def shop():
+    records = get_shop_info()
     return render_template('shop.html')
 
 @app.route('/record/<recordid>/')
