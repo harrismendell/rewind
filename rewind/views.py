@@ -10,8 +10,7 @@ def title_screen():
 
 @app.route('/shop')
 def shop():
-    records = get_shop_info()
-    return render_template('shop.html')
+    return render_template('shop.html', records=get_shop_info())
 
 @app.route('/record/<recordid>/')
 def record(recordid):
