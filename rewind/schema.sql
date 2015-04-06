@@ -1,4 +1,4 @@
- drop table if exists record;
+drop table if exists record;
     create table record (
     id integer primary key autoincrement,
     band text not null,

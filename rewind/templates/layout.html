@@ -21,7 +21,15 @@
             <li class = "menuitem"><a href="/shop">Shop</a></li>
             <li class = "menuitem"><a href="">Labels</a></li>
             <li class = "menuitem"><a href="">Contact</a></li>
-            <li class = "menuitem"><a href="">Sign in</a></li>
+            {% if current_user.is_anonymous %}
+            <li class = "menuitem"><a href="/signup">Sign Up</a></li>
+            {% endif %}
+            {% if (current_user.is_active == True) and (current_user.is_authenticated == True) %}
+            <li class = "menuitem"><a href="/logout">Log Out</a></li>
+            {% endif %}
+            {% if current_user.is_active == False %}
+            <li class = "menuitem"><a href="/login">Log In</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>

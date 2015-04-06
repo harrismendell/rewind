@@ -1,7 +1,7 @@
-from flask import render_template, g
-from models import select_record, get_shop_info
-from rewind import app
-import sqlite3 as sql
+from flask import render_template, g, request, redirect, url_for, flash
+from flask.ext.login import login_user,  logout_user
+from models import select_record, get_shop_info, User, insert_user
+from rewind import app, login_manager
 
 # routes
 @app.route('/')
@@ -27,3 +27,46 @@ def record(recordid):
                            review_snippet=rec[9],
                            days_to_go=rec[10]
                            )
+
+@app.route('/signup')
+def signup():
+    return '''
+        <form action="/signup/confirm" method="post">
+            <p>Username: <input name="username" type="text"></p>
+            <p>Password: <input name="password" type="password"></p>
+            <input type="submit">
+        </form>
+    '''
+@app.route('/signupconfirm', methods=['post'])
+def signup_confirm():
+    user = insert_user(request.form['user'], request.form['password'])
+    login_user(user)
+    return redirect(url_for('/'))
+
+@app.route('/login')
+def login():
+    return '''
+        <form action="/login/check" method="post">
+            <p>Username: <input name="username" type="text"></p>
+            <p>Password: <input name="password" type="password"></p>
+            <input type="submit">
+        </form>
+    '''
+
+@app.route('/login/check', methods=['post'])
+def login_check():
+    # validate username and password
+    user = User.get(request.form['username'])
+    if (user and user.password == request.form['password']):
+        login_user(user)
+        user.is_authenticated = True;
+    else:
+        flash('Username or password incorrect')
+
+    return redirect(url_for('/'))
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('/'))
