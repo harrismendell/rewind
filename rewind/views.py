@@ -56,14 +56,16 @@ def login():
 @app.route('/login/check', methods=['post'])
 def login_check():
     # validate username and password
-    user = User.get(request.form['username'])
-    if (user and user.password == request.form['password']):
-        login_user(user)
-        user.is_authenticated = True;
-    else:
-        flash('Username or password incorrect')
+    try:
+        user = User.get(request.form['username'])
+        if (user and user.password == request.form['password']):
+            login_user(user)
+        else:
+            flash('Username or password incorrect')
+    except TypeError:
+        flash('User does not exist')
+    return render_template('main.html')
 
-    return redirect(url_for('/'))
 
 
 @app.route('/logout')

@@ -5,9 +5,10 @@ from flask.ext.login import LoginManager, UserMixin, current_user, login_user, l
 from rewind import app, login_manager
 
 class User(UserMixin):
-    def __init__(self, id, name, active=True):
-        self.name = name
+    def __init__(self, id, name, password, active=True):
         self.id = id
+        self.name = name
+        self.password = password
         self.active = active
 
     def is_active(self):
@@ -23,9 +24,8 @@ class User(UserMixin):
     def get(self_class, user):
         with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
             cur = con.cursor()
-            user1 = cur.execute("SELECT * FROM user_login WHERE user_name=?", (user,)).fetchall()
-            import ipdb; ipdb.set_trace()
-            return User(user1[0][0], user1[0][1])
+            user1 = cur.execute("SELECT * FROM user_login WHERE user_name=?", (user,)).fetchone()
+            return User(user1[0], user1[1], user1[2])
 
 
 class UserNotFoundError(Exception):
@@ -37,16 +37,19 @@ class UserNotFoundError(Exception):
 def load_user(id):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
-        user1 = cur.execute("SELECT * FROM user_login WHERE id =" + id).fetchall()
-    return User(user1[0][0], user1[0][1])
+        user1 = cur.execute("SELECT * FROM user_login WHERE id=?", (id,)).fetchone()
+    return User(user1[0], user1[1], user1[2])
 
 
 def insert_user(user, password):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
         cur.execute("INSERT INTO user_login(user_name, password) VALUES(?,?)", (user, password))
+
+        # this is ugly and should use getter but i'm just trying to get it to work.
+        user = cur.execute("SELECT * FROM user_login WHERE user_name=?", (user,)).fetchone()
         con.commit()
-    return User.get(user)
+    return User(user[0], user[1], user[2])
 
 def insert_record(band, record, record_cover, price, current_buyers, max_buyers, pitchfork_score, pitchfork_link, review_snippet, days_to_go):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
