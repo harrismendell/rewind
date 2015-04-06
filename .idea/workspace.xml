@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="987059d5-2f7a-48ef-861f-17c3aa23face" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rewind/templates/account.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rewind/claimed_records.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rewind/templates/contact.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rewind/templates/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rewind/templates/signup.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/templates/layout.html" afterPath="$PROJECT_DIR$/rewind/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/static/css/main.css" afterPath="$PROJECT_DIR$/rewind/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/templates/record.html" afterPath="$PROJECT_DIR$/rewind/templates/record.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/static/rewind.js" afterPath="$PROJECT_DIR$/rewind/static/rewind.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/templates/shop.html" afterPath="$PROJECT_DIR$/rewind/templates/shop.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/user_schema.sql" afterPath="$PROJECT_DIR$/rewind/user_schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rewind/views.py" afterPath="$PROJECT_DIR$/rewind/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rewind.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,8 +30,8 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rewind/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23537803" vertical-offset="0" max-vertical-offset="720">
-              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.34236804" vertical-offset="0" max-vertical-offset="750">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,10 +128,10 @@
         <option value="$PROJECT_DIR$/rewind/user_schema.sql" />
         <option value="$PROJECT_DIR$/rewind/claimed_records.sql" />
         <option value="$PROJECT_DIR$/rewind/templates/account.html" />
-        <option value="$PROJECT_DIR$/rewind/templates/layout.html" />
         <option value="$PROJECT_DIR$/rewind/views.py" />
         <option value="$PROJECT_DIR$/rewind/templates/record.html" />
         <option value="$PROJECT_DIR$/rewind/static/rewind.js" />
+        <option value="$PROJECT_DIR$/rewind/templates/layout.html" />
       </list>
     </option>
   </component>
@@ -312,6 +300,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rewind/bower_components" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -1005,8 +994,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rewind/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23537803" vertical-offset="0" max-vertical-offset="720">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.34236804" vertical-offset="0" max-vertical-offset="750">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
