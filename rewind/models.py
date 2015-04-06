@@ -10,7 +10,7 @@ class User(UserMixin):
         self.name = name
         self.password = password
         self.active = active
-        self.records = get_bought_records(self):
+        self.records = self.get_bought_records()
 
     def is_active(self):
         return True
@@ -20,6 +20,13 @@ class User(UserMixin):
 
     def is_authenticated(self):
         return True
+
+    def get_bought_records(self):
+        userid = self.id
+        with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
+            cur = con.cursor()
+            result = cur.execute("SELECT * FROM claimed_records WHERE userid=" + str(userid))
+            return result.fetchall()
 
     @classmethod
     def get(self_class, user):
@@ -80,9 +87,3 @@ def buy_record(userid, band, record, record_cover, price):
         con.commit()
 
 
-def get_bought_records(self):
-    userid = current_user.id
-    with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
-        cur = con.cursor()
-        result = cur.execute("SELECT * FROM claimed_records WHERE userid=" + str(userid))
-        return result.fetchall()
