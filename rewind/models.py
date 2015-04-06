@@ -42,12 +42,12 @@ def load_user(id):
     return User(u.name, u.id, u.active)
 
 
-def insert_user(user, password):
+def insert_user(user_name, password):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
-        cur.execute("INSERT INTO user_login(user, password) VALUES(?,?)", (user, password))
+        cur.execute("INSERT INTO user_login(user_name, password) VALUES(?,?)", (user_name, password))
         con.commit()
-    return User.get(user)
+    return User.get(user_name)
 
 def insert_record(band, record, record_cover, price, current_buyers, max_buyers, pitchfork_score, pitchfork_link, review_snippet, days_to_go):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:

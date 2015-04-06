@@ -37,9 +37,10 @@ def signup():
             <input type="submit">
         </form>
     '''
-@app.route('/signupconfirm', methods=['post'])
+@app.route('/signup/confirm', methods=['post'])
 def signup_confirm():
-    user = insert_user(request.form['user'], request.form['password'])
+    import ipdb; ipdb.set_trace()
+    user = insert_user(request.form['username'], request.form['password'])
     login_user(user)
     return redirect(url_for('/'))
 
