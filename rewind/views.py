@@ -34,7 +34,8 @@ def record(recordid):
 
 # routes
 @app.route('/payment_confirm', methods=['post'])
-def payment_confirm():
+def bought_record():
+    import ipdb; ipdb.set_trace()
     return redirect('/account')
 
 @app.route('/account')
