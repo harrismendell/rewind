@@ -8,7 +8,6 @@ import json
 # routes
 @app.route('/')
 def title_screen():
-    import ipdb; ipdb.set_trace()
     return render_template('main.html')
 
 
@@ -19,6 +18,11 @@ def shop():
 @app.route('/record/<recordid>/')
 def record(recordid):
     rec = select_record(recordid)[0]
+    already_bought = False
+    for record in current_user.records:
+        if rec[2] == record[3]:
+            already_bought = True
+
     return render_template('record.html',
                            data=json.dumps(rec),
                            band=rec[1],
@@ -30,14 +34,15 @@ def record(recordid):
                            pitchfork_score=rec[7],
                            pitchfork_link=rec[8],
                            review_snippet=rec[9],
-                           days_to_go=rec[10]
+                           days_to_go=rec[10],
+                           already_bought=already_bought
                            )
 
 @app.route('/payment_confirm', methods=['post'])
 @login_required
 def payment_confirm():
     userid = current_user.id
-    buy_record(userid, request.form['band'], request.form['record'], request.form['record_cover'], request.form['price'])
+    buy_record(userid, request.form['band'], request.form['record'], request.form['record_cover'], request.form['price'], request.form['days_to_go'])
     # below redirect not working.
     return redirect('/shop')
 

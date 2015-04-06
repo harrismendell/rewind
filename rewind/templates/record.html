@@ -16,7 +16,12 @@
                 <a href="{{ pitchfork_link }}">Read More</a>
                 </div>
                 <br>
-                <button onclick="confirmClaim({{ data }})" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
+                {% if not already_bought %}
+                    <button onclick="confirmClaim({{ data }})" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
+                {% endif %}
+                {% if already_bought %}
+                    <h4 class="text-primary">You've already claimed this record!</h4>
+                {% endif %}
         </div>
     </div>
     <br>

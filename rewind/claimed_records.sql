@@ -5,5 +5,6 @@ drop table if exists claimed_records;
     band text not null,
     record text not null,
     record_cover text not null,
-    price float not null
+    price float not null,
+    days_to_go integer not null
 );

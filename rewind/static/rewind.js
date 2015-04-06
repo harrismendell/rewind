@@ -36,7 +36,8 @@ function confirmClaim(data){
                             band: data[1],
                             record: data[2],
                             record_cover: data[3],
-                            price: data[4]
+                            price: data[4],
+                            days_to_go: data[10]
                         })
                     }
                 );

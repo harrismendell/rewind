@@ -80,10 +80,10 @@ def get_shop_info():
         return result.fetchall()
 
 
-def buy_record(userid, band, record, record_cover, price):
+def buy_record(userid, band, record, record_cover, price, days_to_go):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
-        cur.execute("INSERT INTO claimed_records(userid, band, record, record_cover, price ) VALUES(?,?,?,?,?)", (userid, band, record, record_cover, price))
+        cur.execute("INSERT INTO claimed_records(userid, band, record, record_cover, price, days_to_go ) VALUES(?,?,?,?,?,?)", (userid, band, record, record_cover, price, days_to_go))
         con.commit()
 
 
