@@ -1,6 +1,6 @@
 from flask import render_template, g, request, redirect, url_for, flash
 from flask.ext.login import login_user,  logout_user, current_user, login_required
-from models import select_record, get_shop_info, User, insert_user, buy_record
+from models import select_record, get_shop_info, User, insert_user, buy_record, get_bought_records
 from rewind import app, login_manager
 import requests
 import json
@@ -32,19 +32,19 @@ def record(recordid):
                            days_to_go=rec[10]
                            )
 
-# routes
-
 @app.route('/payment_confirm', methods=['post'])
 @login_required
-def bought_record():
-    import ipdb; ipdb.set_trace()
+def payment_confirm():
     userid = current_user.id
     buy_record(userid, request.form['band'], request.form['record'], request.form['record_cover'], request.form['price'])
-    return redirect('/account')
+    # below redirect not working.
+    return redirect('/shop')
 
 @app.route('/account')
+@login_required
 def account():
-    return render_template('account.html')
+    records = get_bought_records()
+    return render_template('account.html', user=current_user.name, records=records)
 
 @app.route('/signup')
 def signup():

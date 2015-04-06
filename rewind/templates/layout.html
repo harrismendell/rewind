@@ -32,7 +32,7 @@
             <li class = "menuitem"><a href="/login">Log In</a></li>
             {% endif %}
             {% if current_user.is_active() and current_user.is_authenticated() %}
-            <li class = "menuitem"><a href="">Account</a></li>
+            <li class = "menuitem"><a href="/account">Account</a></li>
             <li class = "menuitem"><a href="/logout">Log Out</a></li>
             {% endif %}
 
