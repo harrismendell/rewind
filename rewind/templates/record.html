@@ -16,7 +16,10 @@
                 <a href="{{ pitchfork_link }}">Read More</a>
                 </div>
                 <br>
-                {% if not already_bought %}
+                {% if not already_bought and current_user.is_anonymous() %}
+                    <h4 class="text-primary">Must be logged in to claim record.</h4>
+                {% endif %}
+                {% if not already_bought and not current_user.is_anonymous() %}
                     <button onclick="confirmClaim({{ data }})" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
                 {% endif %}
                 {% if already_bought %}

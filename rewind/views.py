@@ -19,9 +19,10 @@ def shop():
 def record(recordid):
     rec = select_record(recordid)[0]
     already_bought = False
-    for record in current_user.records:
-        if rec[2] == record[3]:
-            already_bought = True
+    if not current_user.is_anonymous():
+        for record in current_user.records:
+            if rec[2] == record[3]:
+                already_bought = True
 
     return render_template('record.html',
                            data=json.dumps(rec),
