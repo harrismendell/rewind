@@ -1,7 +1,7 @@
 __author__ = 'sunnyharris'
 import sqlite3 as sql
 from flask import Flask, flash, redirect, url_for, request, get_flashed_messages
-from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user
+from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, current_user
 from rewind import app, login_manager
 
 class User(UserMixin):
@@ -64,8 +64,24 @@ def select_record(record_id):
         result = cur.execute(''.join(("SELECT * FROM record WHERE id=", str(record_id))))
         return result.fetchall()
 
+
 def get_shop_info():
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
         result = cur.execute("SELECT band,record,price,current_buyers,max_buyers FROM record")
+        return result.fetchall()
+
+
+def buy_record(userid, band, record, record_cover, price):
+    with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
+        cur = con.cursor()
+        cur.execute("INSERT INTO claimed_records(userid, band, record, record_cover, price ) VALUES(?,?,?,?,?)", (userid, band, record, record_cover, price))
+        con.commit()
+
+def get_bought_records():
+    userid = current_user.id
+    with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
+        cur = con.cursor()
+        result = cur.execute("SELECT * FROM claimed_records WHERE userid="+ userid)
+        import ipdb; ipdb.set_trace()
         return result.fetchall()
