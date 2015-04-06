@@ -18,22 +18,19 @@ $(function() {
 });
 
 function confirmClaim(data){
-    swal({   title: "Are you sure you want to purchase " + data + "?",
-        text: "As this is a prototype, we will skip the payment process and add it to your account.",
-        type: "warning",
+    debugger;
+    swal({   title: "Are you sure you want to purchase \"" + data[2] + "\" by " + data[1] + "?",
+        text: "It costs " + data[4] + ". As this is a prototype, we will skip the payment process and add it to your account.",
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Claim it!",
-        cancelButtonText: "No, cancel!",
+        confirmButtonText: "I want it!",
+        cancelButtonText: "I don't want it!",
         closeOnConfirm: false,
-        closeOnCancel: false },
+        closeOnCancel: true },
         function(isConfirm){
             if (isConfirm) {
-                swal("You bought it!", "We will now route you to the account page.", "success");
+                swal("You bought \"" + data[2] + "!\" We will now route you to the account page.", "success");
             }
-            else {swal("Cancelled", "You did not buy it.", "error");
-            } });
-    debugger;
+        });
 }
 
 //$("[rel='tooltip']").tooltip();
