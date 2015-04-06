@@ -13,8 +13,8 @@ Then, to run it:
 Pages set up: 
 	
 	About page
-	Store page (but only with "Lemuria - Get Better" interactivity)
-	Record page (but only with "Lemuria - Get Better" interactivity)
+	Store page (Working for lemuria, modest mouse and pavement)
+	Record page (Working for lemuria, modest mouse and pavement)
 
 Important Notes:
 
