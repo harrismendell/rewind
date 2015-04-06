@@ -8,7 +8,7 @@
     <!-- more css -->
     <link rel= "stylesheet" type= "text/css" href= "/static/css/main.css">
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="../static/rewind.js"> </script>
+    <script type="text/javascript" src="/static/rewind.js"> </script>
   </head>
 
   <body>
@@ -24,14 +24,13 @@
           <ul class="nav masthead-nav">
             <li class = "menuitem"><a href="/">About</a></li>
             <li class = "menuitem"><a href="/shop">Shop</a></li>
-            <li class = "menuitem"><a href="">Labels</a></li>
-            <li class = "menuitem"><a href="">Contact</a></li>
+            <li class = "menuitem"><a href="/contact">Contact</a></li>
             {% if current_user.is_anonymous() %}
             <li class = "menuitem"><a href="/signup">Sign Up</a></li>
             <li class = "menuitem"><a href="/login">Log In</a></li>
             {% endif %}
-
             {% if current_user.is_active() and current_user.is_authenticated() %}
+            <li class = "menuitem"><a href="">Account</a></li>
             <li class = "menuitem"><a href="/logout">Log Out</a></li>
             {% endif %}
 

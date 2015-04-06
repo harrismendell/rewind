@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -17,7 +16,7 @@
                 <a href="{{ pitchfork_link }}">Read More</a>
                 </div>
                 <br>
-                <button type="button" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
+                <button onclick="confirmClaim({{ data }})" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
         </div>
     </div>
     <br>
