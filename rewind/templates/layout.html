@@ -16,18 +16,25 @@
     <div class="site-wrapper">
       <nav id="nav" class="navbar navbar-default navbar-static-top">
         <div class="container">
+            {% if username %}
+            <div class="navbar-header">
+                 <a class="navbar-brand" style="color: rgba(255,255,255,.75);" href="">Welcome {{ current_user.name }}</a>
+             </div>
+            {% endif %}
           <ul class="nav masthead-nav">
             <li class = "menuitem"><a href="/">About</a></li>
             <li class = "menuitem"><a href="/shop">Shop</a></li>
             <li class = "menuitem"><a href="">Labels</a></li>
             <li class = "menuitem"><a href="">Contact</a></li>
-            {% if current_user.is_anonymous %}
+            {% if current_user.is_anonymous() %}
             <li class = "menuitem"><a href="/signup">Sign Up</a></li>
             <li class = "menuitem"><a href="/login">Log In</a></li>
             {% endif %}
-            {% if (current_user.is_active == True) and (current_user.is_authenticated == True) %}
+
+            {% if current_user.is_active() and current_user.is_authenticated() %}
             <li class = "menuitem"><a href="/logout">Log Out</a></li>
             {% endif %}
+
           </ul>
         </div>
       </nav>

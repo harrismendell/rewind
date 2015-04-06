@@ -2,11 +2,15 @@ from flask import render_template, g, request, redirect, url_for, flash
 from flask.ext.login import login_user,  logout_user
 from models import select_record, get_shop_info, User, insert_user
 from rewind import app, login_manager
+import requests
 
 # routes
-@app.route('/')
-def title_screen():
-    return render_template('main.html')
+@app.route('/', defaults={'username': None})
+@app.route('/<username>')
+def title_screen(username):
+    if username is None:
+        return render_template('main.html')
+    return render_template('main.html', username=username)
 
 @app.route('/shop')
 def shop():
@@ -41,7 +45,7 @@ def signup():
 def signup_confirm():
     user = insert_user(request.form['username'], request.form['password'])
     login_user(user)
-    return render_template('main.html')
+    return redirect('/')
 
 @app.route('/login')
 def login():
@@ -64,11 +68,12 @@ def login_check():
             flash('Username or password incorrect')
     except TypeError:
         flash('User does not exist')
-    return render_template('main.html')
+    return redirect(('/' + user.name))
+
 
 
 
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('/'))
+    return redirect('/')
