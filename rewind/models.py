@@ -5,28 +5,27 @@ from flask.ext.login import LoginManager, UserMixin, current_user, login_user, l
 from rewind import app, login_manager
 
 class User(UserMixin):
-    def __init__(self, name, id, active=True):
+    def __init__(self, id, name, active=True):
         self.name = name
         self.id = id
         self.active = active
 
     def is_active(self):
-        with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
-            cur = con.cursor()
-            self.active = cur.execute("SELECT is_authenticated FROM user_login WHERE user_name =" + self.name)
-        return self.active
+        return True
 
     def is_anonymous(self):
         return False
 
     def is_authenticated(self):
-        pass
+        return True
 
-    def get(self, user):
+    @classmethod
+    def get(self_class, user):
         with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
             cur = con.cursor()
-            u = cur.execute("SELECT is_authenticated FROM user_login WHERE user_name =" + user)
-            return User(u.name, u.id, u.active)
+            user1 = cur.execute("SELECT * FROM user_login WHERE user_name=?", (user,)).fetchall()
+            import ipdb; ipdb.set_trace()
+            return User(user1[0][0], user1[0][1])
 
 
 class UserNotFoundError(Exception):
@@ -38,16 +37,16 @@ class UserNotFoundError(Exception):
 def load_user(id):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
-        u = cur.execute("SELECT * FROM user_login WHERE id =" + id)
-    return User(u.name, u.id, u.active)
+        user1 = cur.execute("SELECT * FROM user_login WHERE id =" + id).fetchall()
+    return User(user1[0][0], user1[0][1])
 
 
-def insert_user(user_name, password):
+def insert_user(user, password):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
         cur = con.cursor()
-        cur.execute("INSERT INTO user_login(user_name, password) VALUES(?,?)", (user_name, password))
+        cur.execute("INSERT INTO user_login(user_name, password) VALUES(?,?)", (user, password))
         con.commit()
-    return User.get(user_name)
+    return User.get(user)
 
 def insert_record(band, record, record_cover, price, current_buyers, max_buyers, pitchfork_score, pitchfork_link, review_snippet, days_to_go):
     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:

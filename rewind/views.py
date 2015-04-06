@@ -39,10 +39,9 @@ def signup():
     '''
 @app.route('/signup/confirm', methods=['post'])
 def signup_confirm():
-    import ipdb; ipdb.set_trace()
     user = insert_user(request.form['username'], request.form['password'])
     login_user(user)
-    return redirect(url_for('/'))
+    return render_template('main.html')
 
 @app.route('/login')
 def login():
