@@ -4,16 +4,19 @@ from models import select_record, get_shop_info, User, insert_user, buy_record
 from rewind import app, login_manager
 import json
 
+
 # routes
 @app.route('/')
 def title_screen():
-    import ipdb; ipdb.set_trace()
     return render_template('main.html')
 
 
 @app.route('/shop')
 def shop():
-    return render_template('shop.html', records=get_shop_info())
+    records = get_shop_info()
+    import ipdb; ipdb.set_trace()
+    return render_template('shop.html', records)
+
 
 @app.route('/record/<recordid>/')
 def record(recordid):
@@ -39,6 +42,7 @@ def record(recordid):
                            already_bought=already_bought
                            )
 
+
 @app.route('/payment_confirm', methods=['post'])
 @login_required
 def payment_confirm():
@@ -49,15 +53,18 @@ def payment_confirm():
     # below redirect not working.
     return redirect('/shop')
 
+
 @app.route('/account')
 @login_required
 def account():
     records = current_user.get_bought_records()
     return render_template('account.html', user=current_user.name, records=records)
 
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
 
 @app.route('/signup/confirm', methods=['post'])
 def signup_confirm():
@@ -65,13 +72,14 @@ def signup_confirm():
     login_user(user)
     return redirect('/')
 
+
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+
 @app.route('/login/check', methods=['post'])
 def login_check():
-    # validate username and password
     try:
         user = User.get(request.form['username'])
         if (user and user.password == request.form['password']):

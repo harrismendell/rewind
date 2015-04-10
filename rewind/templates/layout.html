@@ -17,13 +17,13 @@
 
     <div class="site-wrapper">
       <nav id="nav" class="navbar navbar-default navbar-static-top">
-<!--         <div class="container">
+        <div class="container">
             {% if current_user.is_active() %}
             <div class="navbar-header">
                  <a class="navbar-brand" style="color: rgba(255,255,255,.75);" href="">Welcome {{ current_user.name }}</a>
              </div>
-            {% endif %} -->
-      <!--     <ul class="nav masthead-nav">
+            {% endif %}
+          <ul class="nav masthead-nav">
             <li class = "menuitem"><a href="/">About</a></li>
             <li class = "menuitem"><a href="/shop">Shop</a></li>
             <li class = "menuitem"><a href="/contact">Contact</a></li>
@@ -34,7 +34,7 @@
             {% if current_user.is_active() and current_user.is_authenticated() %}
             <li class = "menuitem"><a href="/account">Account</a></li>
             <li class = "menuitem"><a href="/logout">Log Out</a></li>
-            {% endif %} -->
+            {% endif %}
 
           </ul>
         </div>
