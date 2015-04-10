@@ -3,24 +3,24 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <h1> {{ band }}: {{ record }}</h1> <br>
+            <h1> {{ data['band'] }}: {{ data['record'] }}</h1> <br>
             <div class="col-md-8">
-                <img class ="img-thumbnail img-rounded" height="500px" width="500px" src={{ record_cover }}>
+                <img class ="img-thumbnail img-rounded" height="500px" width="500px" src={{ data['record_cover'] }}>
             </div>
             <div class="col-sm-4"> </div>
-                <h1><strong> {{ current_buyers }}/{{ max_buyers }} </strong> <small>Claimed</small></h1>
-                <h1><strong> {{ days_to_go }} </strong> <small>Days to go</small> </h1>
-                <h3>Pitchfork Score: <small>{{ pitchfork_score }}</small></h3>
+                <h1><strong> {{ data['current_buyers'] }}/{{ data['max_buyers'] }} </strong> <small>Claimed</small></h1>
+                <h1><strong> {{ data['days_to_go'] }} </strong> <small>Days to go</small> </h1>
+                <h3>Pitchfork Score: <small>{{ data['pitchfork_score'] }}</small></h3>
                 <div style="text-align: left">
-                {{ review_snippet }}
-                <a href="{{ pitchfork_link }}">Read More</a>
+                {{ data['review_snippet'] }}
+                <a href="{{ data['pitchfork_link'] }}">Read More</a>
                 </div>
                 <br>
                 {% if not already_bought and current_user.is_anonymous() %}
                     <h4 class="text-primary">Must be logged in to claim record.</h4>
                 {% endif %}
                 {% if not already_bought and not current_user.is_anonymous() %}
-                    <button onclick="confirmClaim({{ data }})" class="btn btn-lg btn-primary">Claim it now for {{ price }}</button>
+                    <button onclick="confirmClaim({{ data_json }})" class="btn btn-lg btn-primary">Claim it now for {{ data['price'] }}</button>
                 {% endif %}
                 {% if already_bought %}
                     <h4 class="text-primary">You've already claimed this record!</h4>

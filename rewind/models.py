@@ -12,7 +12,7 @@ class User(UserMixin):
         self.name = name
         self.password = password
         self.active = active
-        # self.records = self.get_bought_records()
+        self.records = self.get_bought_records()
 
     def is_active(self):
         return True
@@ -23,13 +23,14 @@ class User(UserMixin):
     def is_authenticated(self):
         return True
 
-    # def get_bought_records(self):
-    #     userid = self.id
-    #     with sql.connect("/Users/sunnyharris/rewind/rewind/database.db") as con:
-    #         cur = con.cursor()
-    #         result = cur.execute(
-    #             "SELECT * FROM claimed_records WHERE userid=" + str(userid))
-    #         return result.fetchall()
+    def get_bought_records(self):
+        records = []
+        with open('rewind/db2.json') as f:
+            my_dict = json.load(f)
+            for rec in my_dict['bought_records']:
+                if rec['username'] == self.name:
+                    records.append(rec)
+        return records
 
     @classmethod
     def get(self_class, user):
@@ -69,9 +70,9 @@ def insert_record(band, record, record_cover, price, current_buyers, max_buyers,
 def select_record(record):
     with open('rewind/db.json') as f: 
         my_dict = json.load(f)
-        for record in my_dict['records']:
-            if record['record'] = record:
-                return record
+        for rec in my_dict['records']:
+            if rec['record'] == record:
+                return rec
 
 
 def get_shop_info():
@@ -80,9 +81,8 @@ def get_shop_info():
         return my_dict['records']
 
 
-def buy_record(userid, band, record, record_cover, price, days_to_go):
-    with open('rewind/db.json') as f: 
-        cur = con.cursor()
-        cur.execute("INSERT INTO claimed_records(userid, band, record, record_cover, price, days_to_go ) VALUES(?,?,?,?,?,?)",
-                    (userid, band, record, record_cover, price, days_to_go))
-        con.commit()
+def buy_record(username, band, record, record_cover, price, days_to_go):
+    with open('rewind/db2.json') as f:
+        my_dict = json.load(f)
+    with open('rewind/db2.json', 'w') as f:
+        my_dict['bought_records'].append({"band": band, "record": record, "record_cover": record_cover, "price": price, "days_to_go": days_to_go})

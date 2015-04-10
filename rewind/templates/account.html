@@ -6,13 +6,13 @@
            <div class="row">
                 <div class="col-sm-3"> </div>
                 <div class="col-md-6">
-                    <h3> {{ record[2] }}: {{ record[3] }}</h3> <br>
+                    <h3> {{ record['band'] }}: {{ record['record'] }}</h3> <br>
                     <div class="col-md-8">
-                        <img class ="img-thumbnail img-rounded" height="250px" width="250px" src={{ record[4] }}>
+                        <img class ="img-thumbnail img-rounded" height="250px" width="250px" src={{ record['record_cover'] }}>
                     </div>
                     <div class="col-sm-5"> </div>
-                        <h3><strong> Price: </strong> <small>{{ record[5] }}</small> </h3>
-                        <h3><strong> Days left: </strong> <small>{{ record[6] }}</small> </h3>
+                        <h3><strong> Price: </strong> <small>{{ record['price'] }}</small> </h3>
+                        <h3><strong> Days left: </strong> <small>{{ record['days_to_go'] }}</small> </h3>
                 </div>
            </div>
           <br>

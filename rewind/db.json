@@ -1,7 +1,9 @@
 {
 	"users" : {
 		"harris": {"username": "harris", "password": "superman1"},
-		"harris2": {"username": "harris2", "password": "superman1"}
+		"harris2": {"username": "harris2", "password": "superman1"},
+		"harrismendell": {"username": "harrismendell", "password": "superman1"}
+
 	},
 
 	"records" : [

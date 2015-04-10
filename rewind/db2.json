@@ -1,0 +1,11 @@
+{
+	"bought_records" : [
+		{"username": "harrismendell",
+			"band": "Lemuria",
+		    "record": "Get Better",
+		    "record_cover": "/static/img/lemuriaGetBetter.jpg",
+		    "price": "$10.00",
+		    "days_to_go": "26"
+		    }
+	]
+}

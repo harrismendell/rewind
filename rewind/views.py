@@ -14,34 +14,21 @@ def title_screen():
 @app.route('/shop')
 def shop():
     records = get_shop_info()
-    import ipdb; ipdb.set_trace()
-    return render_template('shop.html', records)
+    return render_template('shop.html', records=records)
 
 
-@app.route('/record/<recordid>/')
-def record(recordid):
-    rec = select_record(recordid)[0]
+@app.route('/record/<record>/')
+def record(record):
+    data=select_record(record)
+    data_json = json.dumps(data)
     already_bought = False
     if not current_user.is_anonymous():
-        for record in current_user.records:
-            if rec[2] == record[3]:
+        for rec in current_user.records:
+            if rec['record'] == record:
                 already_bought = True
 
-    return render_template('record.html',
-                           data=json.dumps(rec),
-                           band=rec[1],
-                           record=rec[2],
-                           record_cover=rec[3],
-                           price=rec[4],
-                           current_buyers=rec[5],
-                           max_buyers=rec[6],
-                           pitchfork_score=rec[7],
-                           pitchfork_link=rec[8],
-                           review_snippet=rec[9],
-                           days_to_go=rec[10],
-                           already_bought=already_bought
-                           )
-
+    return render_template('record.html', data=data, data_json=data_json, already_bought=already_bought)
+                   
 
 @app.route('/payment_confirm', methods=['post'])
 @login_required
