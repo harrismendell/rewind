@@ -85,4 +85,5 @@ def buy_record(username, band, record, record_cover, price, days_to_go):
     with open('rewind/db2.json') as f:
         my_dict = json.load(f)
     with open('rewind/db2.json', 'w') as f:
-        my_dict['bought_records'].append({"band": band, "record": record, "record_cover": record_cover, "price": price, "days_to_go": days_to_go})
+        my_dict['bought_records'].append({"username": username, "band": band, "record": record, "record_cover": record_cover, "price": price, "days_to_go": days_to_go})
+        json.dump(my_dict, f)

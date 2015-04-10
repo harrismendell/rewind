@@ -1,11 +1,1 @@
-{
-	"bought_records" : [
-		{"username": "harrismendell",
-			"band": "Lemuria",
-		    "record": "Get Better",
-		    "record_cover": "/static/img/lemuriaGetBetter.jpg",
-		    "price": "$10.00",
-		    "days_to_go": "26"
-		    }
-	]
-}
+{"bought_records": [{"username": "harrismendell", "record": "Get Better", "price": "$10.00", "days_to_go": "26", "band": "Lemuria", "record_cover": "/static/img/lemuriaGetBetter.jpg"}, {"username": "harrismendell", "band": "Pavement", "price": "$12.00", "record_cover": "/static/img/crookedRain.jpg", "days_to_go": "15", "record": "Crooked Rain, Crooked Rain"}]}

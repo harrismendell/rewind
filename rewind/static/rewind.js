@@ -18,8 +18,8 @@ $(function() {
 });
 
 function confirmClaim(data){
-    swal({   title: "Are you sure you want to purchase \"" + data[2] + "\" by " + data[1] + "?",
-        text: "It costs " + data[4] + ". As this is a prototype, we will skip the payment process and add it to your account.",
+    swal({   title: "Are you sure you want to purchase \"" + data['record'] + "\" by " + data['band'] + "?",
+        text: "It costs " + data['price'] + ". As this is a prototype, we will skip the payment process and add it to your account.",
         showCancelButton: true,
         confirmButtonText: "I want it!",
         cancelButtonText: "I don't want it!",
@@ -28,16 +28,16 @@ function confirmClaim(data){
         function(isConfirm){
             if (isConfirm) {
                 swal({
-                    title: "You bought \"" + data[2] + "!\"",
+                    title: "You bought \"" + data['record'] + "!\"",
                     text: "Thank you so much."},
                     function(){
                         $.post("/payment_confirm",
                         {
-                            band: data[1],
-                            record: data[2],
-                            record_cover: data[3],
-                            price: data[4],
-                            days_to_go: data[10]
+                            band: data['band'],
+                            record: data['record'],
+                            record_cover: data['record_cover'],
+                            price: data['price'],
+                            days_to_go: data['days_to_go']
                         })
                     }
                 );

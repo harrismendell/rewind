@@ -22,10 +22,10 @@
         <div class="thumbnail shopthumbnail">
             <div class="caption">
                 <div class="caption-text">
-                   <h4>{{ records[0]['band'] }} - {{ records[0]['record'] }}</h4>
-                    <p>Price: {{ records[0]['price'] }}</p>
-                    <p>Currently interested: {{ records[0]['current_buyers'] }}/{{ records[0]['max_buyers']}}</p>
-                    <p><a href="/record/2" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
+                   <h4>{{ records[1]['band'] }} - {{ records[1]['record'] }}</h4>
+                    <p>Price: {{ records[1]['price'] }}</p>
+                    <p>Currently interested: {{ records[1]['current_buyers'] }}/{{ records[1]['max_buyers']}}</p>
+                    <p><a href="/record/{{records[1]['record']}}" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
                 </div>
             </div>
             <img src="/static/img/crookedRain.jpg">
@@ -38,7 +38,7 @@
                     <h4>{{ records[0]['band'] }} - {{ records[0]['record'] }}</h4>
                     <p>Price: {{ records[0]['price'] }}</p>
                     <p>Currently interested: {{ records[0]['current_buyers'] }}/{{ records[0]['max_buyers']}}</p>
-                    <p><a href="/record/3" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
+                    <p><a href="/record/{{records[1]['record']}}" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
                 </div>
             </div>
             <img src="/static/img/moon.jpg">

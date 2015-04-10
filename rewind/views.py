@@ -19,7 +19,7 @@ def shop():
 
 @app.route('/record/<record>/')
 def record(record):
-    data=select_record(record)
+    data = select_record(record)
     data_json = json.dumps(data)
     already_bought = False
     if not current_user.is_anonymous():
@@ -33,8 +33,8 @@ def record(record):
 @app.route('/payment_confirm', methods=['post'])
 @login_required
 def payment_confirm():
-    userid = current_user.id
-    buy_record(userid, request.form['band'], request.form['record'],
+    username = current_user.id
+    buy_record(username, request.form['band'], request.form['record'],
                request.form['record_cover'], request.form['price'],
                request.form['days_to_go'])
     # below redirect not working.
