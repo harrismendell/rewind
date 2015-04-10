@@ -29,7 +29,7 @@ function confirmClaim(data){
             if (isConfirm) {
                 swal({
                     title: "You bought \"" + data['record'] + "!\"",
-                    text: "Thank you so much."},
+                    text: "Thank you so much. It will now appear on your account page."},
                     function(){
                         $.post("/payment_confirm",
                         {
