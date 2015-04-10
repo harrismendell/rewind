@@ -43,7 +43,9 @@ def record(recordid):
 @login_required
 def payment_confirm():
     userid = current_user.id
-    buy_record(userid, request.form['band'], request.form['record'], request.form['record_cover'], request.form['price'], request.form['days_to_go'])
+    buy_record(userid, request.form['band'], request.form['record'],
+               request.form['record_cover'], request.form['price'],
+               request.form['days_to_go'])
     # below redirect not working.
     return redirect('/shop')
 
@@ -75,9 +77,10 @@ def login_check():
         if (user and user.password == request.form['password']):
             login_user(user)
         else:
-            flash('Username or password incorrect')
+            return redirect('/login')
     except TypeError:
-        flash('User does not exist')
+        return redirect('/login')
+
     return redirect('/')
 
 
