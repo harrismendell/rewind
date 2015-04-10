@@ -36,7 +36,7 @@ class User(UserMixin):
     def get(self_class, user):
         with open('rewind/users.json') as f:
             my_dict = json.load(f)
-            user = my_dict['users'][name]
+            return my_dict['users'][user]
 
 
 class UserNotFoundError(Exception):
