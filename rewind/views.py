@@ -7,6 +7,7 @@ import json
 # routes
 @app.route('/')
 def title_screen():
+    import ipdb; ipdb.set_trace()
     return render_template('main.html')
 
 
