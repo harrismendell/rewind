@@ -34,9 +34,10 @@ class User(UserMixin):
 
     @classmethod
     def get(self_class, user):
-        with open('rewind/users.json') as f:
+        with open('rewind/db.json') as f:
             my_dict = json.load(f)
-            return my_dict['users'][user]
+            u = my_dict['users'][user]
+            return User(u['username'], u['password'])
 
 
 class UserNotFoundError(Exception):

@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container">
-        <h1> {{ user }}'s Claimed Records </h1>
+        {% if (records|length) > 0 %}
+        <h1> {{ user }}'s Records </h1>
+        {% endif %}
+        {% if (records|length) == 0 %}
+        <h1> You haven't claimed any records!</h1>
+        {% endif %}
         {% for record in records %}
            <div class="row">
                 <div class="col-sm-3"> </div>
