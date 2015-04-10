@@ -45,6 +45,28 @@ function confirmClaim(data){
         });
 }
 
-//$("[rel='tooltip']").tooltip();
+function validateForm() {
+    var x = document.forms["signup"]["username"].value;
+    var y = document.forms["signup"]["password"].value;
+    var z = document.forms["signup"]["retype"].value;
+
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+    if (x.length < 6) {
+        alert("Name must be at least 6 characters");
+        return false;
+    }
+    if (y.length < 6) {
+        alert("Password must be at least 6 characters");
+        return false;
+    }
+
+    if (y != z){
+        alert("Passwords must match");
+        return false;
+    }
+}
 
 
