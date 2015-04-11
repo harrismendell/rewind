@@ -73,7 +73,7 @@ def login_check():
             login_user(user)
         else:
             return redirect('/login')
-    except TypeError:
+    except KeyError:
         return redirect('/login')
 
     return redirect('/')
