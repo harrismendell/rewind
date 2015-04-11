@@ -8,7 +8,7 @@ Getting the dependencies:
 Then, to run it:
 
 	python setup.py
-
+	(Requires internet access)
 
 Pages set up: 
 	
