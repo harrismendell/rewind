@@ -1,5 +1,5 @@
 __author__ = 'sunnyharris'
-from flask import Flask, flash, redirect, url_for, request, get_flashed_messages
+from .flask import Flask, flash, redirect, url_for, request, get_flashed_messages
 from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, current_user
 from rewind import app, login_manager
 import json
