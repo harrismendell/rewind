@@ -1,6 +1,6 @@
 from flask import render_template, g, request, redirect, url_for, flash
 from flask.ext.login import login_user,  logout_user, current_user, login_required
-from models import select_record, get_shop_info, User, insert_user, buy_record
+from models import select_record, get_shop_info, User, insert_user, buy_record, search_for_record
 from rewind import app, login_manager
 import json
 
@@ -15,6 +15,13 @@ def title_screen():
 def shop():
     records = get_shop_info()
     return render_template('shop.html', records=records)
+
+@app.route('/search', methods=['post'])
+def search():
+    url = search_for_record(request.form['srch-term'])
+    if url == '':
+        return render_template('no_record_found.html', term=request.form['srch-term'])
+    return redirect(url)
 
 
 @app.route('/record/<record>/')

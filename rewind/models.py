@@ -1,5 +1,5 @@
 __author__ = 'sunnyharris'
-from .flask import Flask, flash, redirect, url_for, request, get_flashed_messages
+from flask import Flask, flash, redirect, url_for, request, get_flashed_messages
 from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, current_user
 from rewind import app, login_manager
 import json
@@ -88,3 +88,13 @@ def buy_record(username, band, record, record_cover, price, days_to_go):
     with open('rewind/db2.json', 'w') as f:
         my_dict['bought_records'].append({"username": username, "band": band, "record": record, "record_cover": record_cover, "price": price, "days_to_go": days_to_go})
         json.dump(my_dict, f)
+
+def search_for_record(search_term):
+    with open ('rewind/db.json') as f:
+        my_dict = json.load(f)
+        for record in my_dict['records']:
+            if search_term.lower() == record['record'].lower():
+                return "/record/" + record['record']
+    return ''
+
+
