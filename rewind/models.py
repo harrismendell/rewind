@@ -3,7 +3,7 @@ from flask import Flask, flash, redirect, url_for, request, get_flashed_messages
 from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, current_user
 from rewind import app, login_manager
 import json
-
+import time
 
 class User(UserMixin):
 
@@ -105,10 +105,11 @@ def search_for_record(search_term):
 def add_blog_post(data):
     blog_body = data['blog_body']
     blog_title =data['blog_title']
+    t = str(time.strftime("%c"))
 
     with open('rewind/blog.json') as f: 
         my_dict = json.load(f)
-        my_dict.append({"title": blog_title, "body": blog_body})
+        my_dict.append({"title": blog_title, "body": blog_body, "time": t })
     with open('rewind/blog.json', 'w') as f:
         json.dump(my_dict, f)
 
