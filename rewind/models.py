@@ -32,6 +32,11 @@ class User(UserMixin):
                     records.append(rec)
         return records
 
+    def is_admin(self):
+        if self.name == 'harrismendell':
+            return True
+        return False
+
     @classmethod
     def get(self_class, user):
         with open('rewind/db.json') as f:
@@ -96,5 +101,22 @@ def search_for_record(search_term):
             if search_term.lower() == record['record'].lower():
                 return "/record/" + record['record']
     return ''
+
+def add_blog_post(data):
+    blog_body = data['blog_body']
+    blog_title =data['blog_title']
+
+    with open('rewind/blog.json') as f: 
+        my_dict = json.load(f)
+        my_dict.append({"title": blog_title, "body": blog_body})
+    with open('rewind/blog.json', 'w') as f:
+        json.dump(my_dict, f)
+
+    return my_dict
+
+def get_blogs():
+    with open('rewind/blog.json') as f: 
+        my_dict = json.load(f)
+    return my_dict
 
 

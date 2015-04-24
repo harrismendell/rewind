@@ -27,6 +27,10 @@
           <ul class="nav masthead-nav">
             <li class = "menuitem"><a href="/">About</a></li>
             <li class = "menuitem"><a href="/shop">Shop</a></li>
+            <li class = "menuitem"><a href="/blog">Blog</a></li>
+            {% if current_user.is_admin %}
+              <li class = "menuitem"><a href="/manage_blog">Manage Blog</a></li>
+            {% endif %}
             <li class = "menuitem"><a href="/contact">Contact</a></li>
             {% if current_user.is_anonymous() %}
             <li class = "menuitem"><a href="/signup">Sign Up</a></li>
