@@ -10,11 +10,10 @@ Then, to run it:
 	python setup.py
 	(Requires internet access)
 
-Pages set up: 
-	
-	About page
-	Store page (Working for lemuria, modest mouse and pavement)
-	Record page (Working for lemuria, modest mouse and pavement)
+For Admin Access (need this to see news managing system):
+
+	username: admin
+	password: password
 
 Important Notes:
 
