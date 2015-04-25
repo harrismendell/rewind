@@ -7,12 +7,13 @@ import time
 
 class User(UserMixin):
 
-    def __init__(self, name, password, active=True):
+    def __init__(self, name, password, is_admin, active=True):
         self.id = name
         self.name = name
         self.password = password
         self.active = active
         self.records = self.get_bought_records()
+        self.is_admin = is_admin
 
     def is_active(self):
         return True
@@ -42,7 +43,11 @@ class User(UserMixin):
         with open('rewind/db.json') as f:
             my_dict = json.load(f)
             u = my_dict['users'][user]
-            return User(u['username'], u['password'])
+            try:
+                is_admin = u['is_admin']
+            except KeyError:
+                is_admin = False
+            return User(u['username'], u['password'], is_admin)
 
 
 class UserNotFoundError(Exception):
@@ -53,7 +58,11 @@ def load_user(name):
     with open('rewind/db.json') as f:
         my_dict = json.load(f)
         user = my_dict['users'][name]
-    return User(user['username'], user['password'])
+        try:
+            is_admin = user['is_admin']
+        except KeyError:
+            is_admin = False
+    return User(user['username'], user['password'], is_admin)
 
 
 def insert_user(username, password):
@@ -62,7 +71,7 @@ def insert_user(username, password):
         my_dict['users'][username] = {"username": username, "password": password}
     with open('rewind/db.json', 'w') as f:
         json.dump(my_dict, f)
-    return User(username, password)
+    return User(username, password, False)
 
 
 def insert_record(band, record, record_cover, price, current_buyers, max_buyers, 
