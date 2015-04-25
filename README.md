@@ -11,6 +11,7 @@ Then, to run it:
 	(Requires internet access)
 
 For Admin Access (need this to see news managing system):
+
 	username: admin
 	password: password
 
