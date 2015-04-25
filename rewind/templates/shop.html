@@ -46,9 +46,45 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4"><img class ="img-thumbnail" src="/static/img/cerulean.jpg"></div>
-    <div class="col-sm-4"><img class ="img-thumbnail" src="/static/img/elliotSmith.jpg"></div>
-    <div class="col-sm-4"><img class ="img-thumbnail" src="/static/img/speedyOrtiz.jpg"></div>
+     <div class="col-sm-4">
+        <div class="thumbnail shopthumbnail">
+            <div class="caption">
+                <div class="caption-text">
+                    <h4>{{ records[3]['band'] }} - {{ records[3]['record'] }}</h4>
+                    <p>Price: {{ records[3]['price'] }}</p>
+                    <p>Currently interested: {{ records[3]['current_buyers'] }}/{{ records[3]['max_buyers']}}</p>
+                    <p><a href="/record/{{records[3]['record']}}" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
+                </div>
+            </div>
+            <img src="/static/img/cerulean.jpg">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="thumbnail shopthumbnail">
+            <div class="caption">
+                <div class="caption-text">
+                    <h4>{{ records[4]['band'] }} - {{ records[4]['record'] }}</h4>
+                    <p>Price: {{ records[4]['price'] }}</p>
+                    <p>Currently interested: {{ records[4]['current_buyers'] }}/{{ records[4]['max_buyers']}}</p>
+                    <p><a href="/record/{{records[4]['record']}}" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
+                </div>
+            </div>
+            <img src="/static/img/newmoon.jpg">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="thumbnail shopthumbnail">
+            <div class="caption">
+                <div class="caption-text">
+                    <h4>{{ records[5]['band'] }} - {{ records[5]['record'] }}</h4>
+                    <p>Price: {{ records[5]['price'] }}</p>
+                    <p>Currently interested: {{ records[5]['current_buyers'] }}/{{ records[5]['max_buyers']}}</p>
+                    <p><a href="/record/{{records[5]['record']}}" class="label label-danger" rel="tooltip" title="Zoom">Check it out</a>
+                </div>
+            </div>
+            <img src="/static/img/speedyOrtiz.jpg">
+        </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-sm-4"><img class ="img-thumbnail" src="/static/img/nwa.jpg"></div>
