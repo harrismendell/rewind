@@ -1,6 +1,6 @@
 from flask import render_template, g, request, redirect, url_for, flash
 from flask.ext.login import login_user,  logout_user, current_user, login_required
-from models import select_record, get_shop_info, User, insert_user, buy_record, search_for_record, add_blog_post, get_blogs
+from models import select_record, get_shop_info, User, insert_user, buy_record, search_for_record, add_blog_post, get_blogs, remove_blog_data
 from rewind import app, login_manager
 import json
 
@@ -23,6 +23,13 @@ def blog():
 @app.route('/manage_blog')
 def manage_blog():
     return render_template('manage_blog.html')
+
+@app.route('/remove/<blog>', methods=['POST'])
+def remove_blog(blog):
+    if current_user.is_anonymous() or (current_user.is_admin == 0):
+        return render_template('admin.html')
+    remove_blog_data(blog)   
+    return redirect('/blog')
 
 
 @app.route('/shop')

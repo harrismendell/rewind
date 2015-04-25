@@ -10,8 +10,12 @@
              <article><p>
                  {{blog['body']}}  
                  </p></article>
-             <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">READ MORE</a> 
         </div>
+        {% if current_user.is_admin %}
+        <form method="POST" action="/remove/{{blog['title']}}">
+            <td><button type="submit" class="btn btn-default">Remove</button></td>
+        </form>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

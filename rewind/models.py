@@ -120,4 +120,15 @@ def get_blogs():
         my_dict = json.load(f)
     return my_dict
 
+def remove_blog_data(blog_title):
+    with open('rewind/blog.json') as f: 
+        my_dict = json.load(f)
+
+    for index, blog in enumerate(my_dict):    
+        if blog['title'] == blog_title:
+            my_dict.pop(index)
+    with open('rewind/blog.json', 'w') as f:
+        json.dump(my_dict, f)
+
+
 
