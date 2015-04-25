@@ -17,7 +17,7 @@ def blog():
         data = add_blog_post(request.form)
     else:
         data = get_blogs()
-    return render_template('blog.html', blogs=data)
+    return render_template('blog.html', blogs=reversed(data))
 
 # routes
 @app.route('/manage_blog')
